@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Dalston.iml" filepath="$PROJECT_DIR$/.idea/Dalston.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SinkReceiver/SinkReceiver.iml" filepath="$PROJECT_DIR$/SinkReceiver/SinkReceiver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SinkSender/SinkSender.iml" filepath="$PROJECT_DIR$/SinkSender/SinkSender.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway/api-gateway.iml" filepath="$PROJECT_DIR$/api-gateway/api-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client/config-client.iml" filepath="$PROJECT_DIR$/config-client/config-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server-git/config-server-git.iml" filepath="$PROJECT_DIR$/config-server-git/config-server-git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka/eureka.iml" filepath="$PROJECT_DIR$/eureka/eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-client/eureka-client.iml" filepath="$PROJECT_DIR$/eureka-client/eureka-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-feign-upload-client/eureka-feign-upload-client.iml" filepath="$PROJECT_DIR$/eureka-feign-upload-client/eureka-feign-upload-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-feign-upload-server/eureka-feign-upload-server.iml" filepath="$PROJECT_DIR$/eureka-feign-upload-server/eureka-feign-upload-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feign-consumer/feign-consumer.iml" filepath="$PROJECT_DIR$/feign-consumer/feign-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ribbon-consumer/ribbon-consumer.iml" filepath="$PROJECT_DIR$/ribbon-consumer/ribbon-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swagger-api-gateway/swagger-api-gateway.iml" filepath="$PROJECT_DIR$/swagger-api-gateway/swagger-api-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swagger-service-a/swagger-service-a.iml" filepath="$PROJECT_DIR$/swagger-service-a/swagger-service-a.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swagger-service-b/swagger-service-b.iml" filepath="$PROJECT_DIR$/swagger-service-b/swagger-service-b.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trace-1/trace-1.iml" filepath="$PROJECT_DIR$/trace-1/trace-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trace-2/trace-2.iml" filepath="$PROJECT_DIR$/trace-2/trace-2.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="api-gateway" />
+        <module name="config-client" />
+        <module name="config-server-git" />
+        <module name="eureka" />
+        <module name="eureka-client" />
+        <module name="eureka-feign-upload-client" />
+        <module name="eureka-feign-upload-server" />
+        <module name="feign-consumer" />
+        <module name="ribbon-consumer" />
+        <module name="SinkReceiver" />
+        <module name="SinkSender" />
+        <module name="swagger-api-gateway" />
+        <module name="swagger-service-a" />
+        <module name="swagger-service-b" />
+        <module name="trace-1" />
+        <module name="trace-2" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api-gateway" target="1.8" />
+      <module name="config-client" target="1.8" />
+      <module name="config-server-git" target="1.8" />
+      <module name="eureka" target="1.8" />
+      <module name="eureka-client" target="1.8" />
+      <module name="eureka-feign-upload-client" target="1.8" />
+      <module name="eureka-feign-upload-server" target="1.8" />
+      <module name="feign-consumer" target="1.8" />
+      <module name="ribbon-consumer" target="1.8" />
+      <module name="SinkReceiver" target="1.8" />
+      <module name="SinkSender" target="1.8" />
+      <module name="swagger-api-gateway" target="1.8" />
+      <module name="swagger-service-a" target="1.8" />
+      <module name="swagger-service-b" target="1.8" />
+      <module name="trace-1" target="1.8" />
+      <module name="trace-2" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

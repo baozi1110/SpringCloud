@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: admin-client
+#admin的客户端不需要配置权限控制
+#  security:
+#    user:
+#      name: client
+#      password: client
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  file: var/log/sample-boot-application.log
+#  pattern:
+#    file: clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    prefer-ip-address: true
+    metadata-map:
+      user.name:  ${spring.security.user.name}
+      user.password:  ${spring.security.user.password}
+  client:
+    registryFetchIntervalSeconds: 5
+    service-url:
+      defaultZone: http://admin:admin@eureka1.adminlife.cn:7001/eureka/
+#      defaultZone: http://admin:admin@192.168.88.97:7001/eureka/
+server:
+  port: 8765

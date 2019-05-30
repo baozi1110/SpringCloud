@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/config-client/pom.xml" />
+        <option value="$PROJECT_DIR$/config-server-git/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-client/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-feign-upload-client/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-feign-upload-server/pom.xml" />
+        <option value="$PROJECT_DIR$/feign-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/ribbon-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/SinkReceiver/pom.xml" />
+        <option value="$PROJECT_DIR$/SinkSender/pom.xml" />
+        <option value="$PROJECT_DIR$/swagger-api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/swagger-service-a/pom.xml" />
+        <option value="$PROJECT_DIR$/swagger-service-b/pom.xml" />
+        <option value="$PROJECT_DIR$/trace-1/pom.xml" />
+        <option value="$PROJECT_DIR$/trace-2/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>
