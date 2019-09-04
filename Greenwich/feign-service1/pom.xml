@@ -33,6 +33,7 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
+
         <!--测试继承-->
         <dependency>
             <groupId>com.example</groupId>
