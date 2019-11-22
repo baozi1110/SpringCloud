@@ -5,10 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
 @RestController
@@ -20,13 +21,37 @@ public class GatewayDemoApplication {
 
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+        String httpUri = "https://www.baidu.com/";
         return builder.routes()
                 .route(r -> r
-                        .path("/get")
-                        .filters(f -> f.addRequestHeader("Hello","World"))
-                        .uri("http://httpbin.org:80")
-                ).build();
+                        .path("/py/**")
+                        .uri(httpUri))
+                .build();
     }
+    // bean形式测试hystrix
+    // @Bean
+    // public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+    //     String httpUri = "http://httpbin.org:80";
+    //     return builder.routes()
+    //             .route(r -> r
+    //                     .path("/get")
+    //                     .filters(f -> f.addRequestHeader("Hello","World"))
+    //                     .uri(httpUri))
+    //             //使用Hystrix
+    //             .route(r -> r
+    //                     .host("*.hystrix.com")
+    //                     .filters(f -> f
+    //                         .hystrix(config -> config
+    //                             .setName("mycmd")
+    //                             .setFallbackUri("forward:/fallback")))
+    //                     .uri(httpUri))
+    //             .build();
+    // }
+    //
+    // @RequestMapping("/fallback")
+    // public Mono<String> fallback() {
+    //     return Mono.just("fallback");
+    // }
 
     // @RequestMapping("/hystrixfallback")
     // public String hystrixfallback() {

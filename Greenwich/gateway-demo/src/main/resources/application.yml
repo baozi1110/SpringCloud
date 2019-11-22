@@ -1,46 +1,134 @@
 server:
   port: 8081
+
+yunshi:
+  security:
+    client-id: yunshi
+
+#拦截的白名单
+auth:
+  ignored:  /api-file/files-anon/**,/test163/** , /api-auth/** , /doc.html ,/test111 ,/api-user/users-anon/login,/user-center/users-anon/login,/document.html,**/v2/api-docs,/oauth/** ,/login.html ,/user/login,/**/**.css ,/**/**.js
+#调用feign需要配置访问失败超时时间
+ribbon:
+  ConnectTimeout: 30000
+  ReadTimeout: 30000
+  eager-load:
+    enabled: true
+    clients: ees-ent, ees-flight, ees-merchant, ees-msg, ees-mst, ees-pay, ees-sys, ees-tem, ees-workflow
 spring:
   application:
     name: gateway-service
+#  redis:
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    password:
+  redis:
+    database: 1
+    host: 59.110.19.89
+    port: 6379
+    password: Renwu502
+  security:
+    user:
+      name: yunshi
+      password: yunshi
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true #表名开启注册发现
           lowerCaseServiceId: true
-#      routes:
-#            - id: feign-client1 #路由id，需要唯一
-##            uri以lb://开头（lb代表从注册中心获取服务），后面接的就是你需要转发到的服务名称，这个服务名称必须跟eureka中的对应，否则会找不到服务,
-#              uri: lb://feign-client1
-#              predicates:
-#              #过滤的访问地址，表示符合该格式的请求被通过
-#                - Path=/feign/**
-#              filters:
-#                - StripPrefix=1 #表示在转发时去掉Path中配置的二级域名
-##                - RequestTime=true
-#            - id: admin-server
-#              uri: lb://admin-server
-#              predicates:
-#                - Path=/admin/**
-#              filters:
-#                - StripPrefix=1
+      routes:
+        - id: feign-client1 #路由id，需要唯一
+          #      uri以lb://开头（lb代表从注册中心获取服务），后面接的就是你需要转发到的服务名称，这个服务名称必须跟eureka中的对应，否则会找不到服务,
+          uri: lb://feign-client1
+          predicates:
+            #过滤的访问地址，表示符合该格式的请求被通过
+            - Path=/feign/**
+          filters:
+            - StripPrefix=1 #表示在转发时去掉Path中配置的二级域名
+            #          - RequestTime=true
+            - RewritePath=/employee/(?<path>.*), /$\{path}
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
+        ################     filter过滤器示例       ########################
+#        - id: rewritepath_route
+#          uri: https://blog.csdn.net
+#          predicates:
+#            - Path=/**
+#          filters:
+#            - RewritePath=/employee/(?<path>.*), /$\{path}
+#        - RewritePath=/foo/(?<segment>.*), /$\{segment}
+#     添加请求头
+#      - id: add_request_header_route
+#        uri: https://httpbin.org/get
+#        filters:
+#        - AddRequestHeader=X-Request-Foo, Bar
+#        predicates:
+#        - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+
+
+
+
+
+################     Predict路由匹配示例       ########################
+#        请求参数匹配
+#        - id: query_route
+#          uri: http://httpbin.org:80/get
+#          predicates:
+#          - Query=foo, ba.
+#       请求路径匹配
+#        - id: path_route
+#          uri: http://httpbin.org:80/get
+#          predicates:
+#          - Path=/foo/{segment}
+#        匹配get请求
+#        - id: method_route
+#          uri: http://httpbin.org:80/get
+#          predicates:
+#          - Method=GET
+#          匹配host
+#         - id: host_route
+#           uri: http://httpbin.org:80/get
+#           predicates:
+#           - Host=**.fangzhipeng.com
+
+#           #匹配cookie
+#         - id: cookie_route
+#           uri: http://httpbin.org:80/get
+#           predicates:
+#           - Cookie=name, forezp
+#         # predicate测试header
+#         - id: header_route
+#           uri: http://httpbin.org:80/get
+#           predicates:
+#            - Header=X-Request-Id, \d+
+##        predicate测试时间
+#         - id: after_route
+#           uri: http://httpbin.org:80/get
+#           predicates:
+#            #时间在
+#             - After=2018-01-20T17:42:47.789-07:00[America/Denver]
+
 
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
     health-check-url-path: /actuator/health
     prefer-ip-address: true
-    ip-address: 192.168.88.38
+    ip-address: 192.168.88.28
     hostname: ${eureka.instance.ip-address}
     instance-id: ${eureka.instance.ip-address}:${server.port}
-#    metadata-map:
-#      user.name:  ${spring.security.user.name}
-#      user.password:  ${spring.security.user.password}
+  #    metadata-map:
+  #      user.name:  ${spring.security.user.name}
+  #      user.password:  ${spring.security.user.password}
   client:
     registryFetchIntervalSeconds: 30
     service-url:
-      defaultZone: http://eureka.didispace.com/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@Eureka1.yunshilife.cn:7001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@Eureka2.yunshilife.cn:7002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@Eureka3.yunshilife.cn:7003/eureka/
+#      defaultZone: http://eureka.didispace.com/eureka/
 #logging:
 #  level:
 #    org.springframework.cloud.gateway: TRACE
@@ -53,5 +141,9 @@ management:
       exposure:
         include: "*"
   endpoint:
-      health:
-        show-details: ALWAYS
+    health:
+      show-details: ALWAYS
+hystrix:
+  metrics:
+    enabled: true
+
