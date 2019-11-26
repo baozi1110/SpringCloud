@@ -18,16 +18,12 @@ ribbon:
 spring:
   application:
     name: gateway-service
-#  redis:
-#    database: 0
-#    host: 127.0.0.1
-#    port: 6379
-#    password:
   redis:
-    database: 1
-    host: 59.110.19.89
+    database: 0
+    host: 127.0.0.1
     port: 6379
-    password: Renwu502
+    password:
+
   security:
     user:
       name: yunshi
@@ -127,8 +123,7 @@ eureka:
   client:
     registryFetchIntervalSeconds: 30
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@Eureka1.yunshilife.cn:7001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@Eureka2.yunshilife.cn:7002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@Eureka3.yunshilife.cn:7003/eureka/
-#      defaultZone: http://eureka.didispace.com/eureka/
+      defaultZone: http://eureka.didispace.com/eureka/
 #logging:
 #  level:
 #    org.springframework.cloud.gateway: TRACE
